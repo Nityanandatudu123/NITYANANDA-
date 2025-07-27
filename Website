@@ -1,0 +1,98 @@
+import React from "react";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Mail, Instagram, Twitter } from "lucide-react";
+
+export default function CreativePortfolioSite() {
+  return (
+    <div className="font-sans text-gray-800">
+      {/* Hero Section */}
+      <section className="bg-[#F4F6FB] text-center py-24 px-4">
+        <h1 className="text-4xl md:text-6xl font-bold mb-4">Welcome to My World</h1>
+        <p className="text-lg md:text-xl mb-6">Creative ideas, professional delivery, and a sprinkle of humor.</p>
+        <Button className="text-lg px-6 py-3 rounded-2xl shadow">Explore My Work</Button>
+      </section>
+
+      {/* Portfolio Section */}
+      <section className="py-16 px-6 grid gap-6 md:grid-cols-3 bg-white">
+        {[1, 2, 3, 4, 5, 6].map((item) => (
+          <Card key={item} className="rounded-2xl overflow-hidden shadow-md">
+            <CardContent className="p-0">
+              <img
+                src={`https://via.placeholder.com/400x300?text=Project+${item}`}
+                alt={`Project ${item}`}
+                className="w-full h-64 object-cover"
+              />
+              <div className="p-4">
+                <h3 className="font-bold text-xl mb-2">Project Title {item}</h3>
+                <p className="text-sm text-gray-600">A short and witty description of the project goes here.</p>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </section>
+
+      {/* Services Page */}
+      <section className="bg-[#EFF2F7] py-20 px-8">
+        <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">Services & Pricing</h2>
+        <div className="grid gap-8 md:grid-cols-3">
+          {[
+            { title: "Web Design", price: "$500+", desc: "Sleek, responsive websites tailored for you." },
+            { title: "Branding", price: "$300+", desc: "Unique visual identities that stand out." },
+            { title: "Consulting", price: "$100/hr", desc: "Creative strategy and project planning." },
+          ].map(({ title, price, desc }) => (
+            <Card key={title} className="rounded-2xl p-6 shadow-md">
+              <h3 className="text-xl font-semibold mb-2">{title}</h3>
+              <p className="text-sm text-gray-500 mb-4">{desc}</p>
+              <p className="font-bold text-lg">{price}</p>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* About Page */}
+      <section className="py-20 px-6 bg-white">
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">About Me</h2>
+        <div className="max-w-3xl mx-auto text-center">
+          <p className="mb-4">Hi there! I’m a designer, developer, and all-around creative enthusiast. With over 7 years of experience, I’ve worked with brands big and small to bring ideas to life.</p>
+          <p className="mb-4">Skills? Check. Humor? Double check. Let’s create something awesome together.</p>
+          <p className="font-semibold">Skills: React, Figma, Branding, Strategy, Communication</p>
+        </div>
+      </section>
+
+      {/* Blog Section */}
+      <section className="bg-[#F4F6FB] py-20 px-6">
+        <h2 className="text-3xl md:text-4xl font-bold mb-10 text-center">Blog & Insights</h2>
+        <div className="grid md:grid-cols-3 gap-6">
+          {["Design Trends", "Client Stories", "Pro Tips"].map((title, i) => (
+            <Card key={title} className="rounded-2xl p-6">
+              <h3 className="font-bold text-xl mb-2">{title}</h3>
+              <p className="text-sm text-gray-600">A sneak peek into creative wisdom, told with a smile.</p>
+              <Button variant="link" className="mt-2 px-0">Read More</Button>
+            </Card>
+          ))}
+        </div>
+      </section>
+
+      {/* Contact Page */}
+      <section className="bg-white py-20 px-6">
+        <h2 className="text-3xl md:text-4xl font-bold mb-8 text-center">Let’s Connect</h2>
+        <div className="max-w-xl mx-auto">
+          <form className="space-y-4">
+            <Input placeholder="Your Name" required />
+            <Input type="email" placeholder="Your Email" required />
+            <Textarea placeholder="Your Message" rows={5} required />
+            <Button className="w-full py-2 rounded-2xl">Send Message</Button>
+          </form>
+          <div className="mt-6 flex justify-center gap-6 text-gray-600">
+            <a href="mailto:you@example.com"><Mail className="w-5 h-5" /></a>
+            <a href="https://instagram.com" target="_blank"><Instagram className="w-5 h-5" /></a>
+            <a href="https://twitter.com" target="_blank"><Twitter className="w-5 h-5" /></a>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
